@@ -10,7 +10,7 @@ router.get('/users/signup',(req,res) => {
   res.render('users/signup');
 })
 router.post('/users/signup', async (req,res)=> {
-  console.log(req.body);
+  //console.log(req.body);
   const {name ,email,password,confirm_password}=req.body;
   const errors=[];
   if(name.length <= 0){
