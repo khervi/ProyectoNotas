@@ -3,6 +3,7 @@ const path = require('path');
 const exphbs=require('express-handlebars');
 const methodOverride=require('method-override');//METODOS para crear dentro de otros metodos
 const session=require('express-session');
+const passport=require('passport');
 //const flash=require ('connect-flash')
 const handlebars=require('handlebars')
 const bodyParser= require('body-parser')
@@ -13,7 +14,7 @@ const bodyParser= require('body-parser')
 //initializacions
 const app=express();
 require ('./database');
-
+require('./config/passport');
 //seting
 app.set('port',process.env.PORT || 3000);
 app.set('views',path.join(__dirname, 'views'));
@@ -37,6 +38,8 @@ app.use(session({
   resave:true,
   saveUninitialized:true
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 //app.use(flash());
 
 //global variables
